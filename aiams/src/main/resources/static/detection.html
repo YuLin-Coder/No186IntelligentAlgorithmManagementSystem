@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择模型和照片预测</title>
+</head>
+<body>
+<!-- 
+<form method="post" action="http://192.168.3.7:5000/detection_html">
+ <form method="post" action="/detection">
+    <input type="text" name="model_path" placeholder="输入模型">
+    <input type="text" name="image" placeholder="输入图片">
+    <br><br>
+    <input type="submit" value="Submit" name="ok"/>
+</form>
+ -->
+ <form method="post" action="/load_model">
+    <input type="text" name="model_name" placeholder="输入模型名称">
+    <input type="text" name="model_path" placeholder="输入模型路径">
+    <input type="text" name="classes_path" placeholder="输入类文件路径">
+    <br><br>
+    <input type="submit" value="加载模型" name="ok"/>
+</form>
+
+<form method="post" action="/predict">
+    <input type="text" name="image" placeholder="输入类文件路径">
+    <br><br>
+    <input type="submit" value="检测" name="ok"/>
+</form>
+</body>
+</html>

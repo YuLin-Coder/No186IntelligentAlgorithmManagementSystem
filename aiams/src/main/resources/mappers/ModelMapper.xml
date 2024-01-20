@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.hhu.aiams.mapper.ModelMapper">
+
+	<resultMap id="modResultMap" type="cn.hhu.aiams.entity.Model">
+	    <id column="id" property="id"></id>
+	    <result column="modelname" property="modelname"></result>
+	    <result column="algname" property="algname"></result>
+	    <result column="sampleset" property="sampleset"></result>
+	    <result column="state" property="state"></result>
+	    <result column="createtime" property="createtime"></result>
+	    <result column="trainstarttime" property="trainstarttime"></result>
+	    <result column="trainendtime" property="trainendtime"></result>
+	</resultMap>
+	
+	<insert id="addModel"
+		useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO t_model (
+			modelname, algname, sampleset
+		) VALUES (
+			#{modelname}, #{algname}, #{sampleset}
+		)
+	</insert>
+	
+	<select id="findByModelName" 
+		resultMap="modResultMap">
+		SELECT * FROM t_model WHERE modelname=#{modelname}
+	</select>
+
+	<select id="findAll" resultMap="modResultMap">
+    	SELECT * FROM t_model
+	</select>
+	
+	<select id="findByID" 
+		resultMap="modResultMap">
+		SELECT * FROM t_model WHERE id=#{id}
+	</select>
+	
+	<update id="updModel">
+		UPDATE t_model SET modelname=#{modelname},algname=#{algname}, sampleset=#{sampleset} WHERE id = #{id}
+	</update>
+	
+	<delete id="delModel">
+		DELETE FROM t_model WHERE id = #{id}
+	</delete>
+	
+</mapper>

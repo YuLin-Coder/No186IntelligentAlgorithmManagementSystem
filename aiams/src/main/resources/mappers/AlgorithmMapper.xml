@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.hhu.aiams.mapper.AlgorithmMapper">
+
+	<resultMap id="algResultMap" type="cn.hhu.aiams.entity.Algorithm">
+	    <id column="id" property="id"></id>
+	    <result column="name" property="name"></result>
+	    <result column="type" property="type"></result>
+	    <result column="state" property="state"></result>
+	    <result column="callby" property="callby"></result>
+	    <result column="date" property="date"></result>
+	</resultMap>
+
+	<insert id="addAlgorithm"
+		useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO t_algorithm (
+			name, type, callby
+		) VALUES (
+			#{name}, #{type},
+			#{callby}
+		)
+	</insert>
+	
+	<select id="findByAlgorithmName" 
+		resultMap="algResultMap">
+		SELECT * FROM t_algorithm WHERE name=#{name}
+	</select>
+
+	<select id="findAll" resultMap="algResultMap">
+    	SELECT * FROM t_algorithm
+	</select>
+	
+	<select id="findByID" 
+		resultMap="algResultMap">
+		SELECT * FROM t_algorithm WHERE id=#{id}
+	</select>
+	
+		
+	<delete id="delAlgorithm">
+		DELETE FROM t_algorithm WHERE id = #{id}
+	</delete>
+	
+	<update id="updAlgorithm">
+		UPDATE t_algorithm SET name=#{name},type=#{type}, callby=#{callby} WHERE id = #{id}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+

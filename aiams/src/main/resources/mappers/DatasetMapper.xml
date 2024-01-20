@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.hhu.aiams.mapper.DatasetMapper">
+
+	<resultMap id="datasetResultMap" type="cn.hhu.aiams.entity.Dataset">
+	    <id column="id" property="id"></id>
+	    <result column="name" property="name"></result>
+	    <result column="type" property="type"></result>
+	    <result column="count" property="count"></result>
+	    <result column="marked" property="marked"></result>
+	    <result column="state" property="state"></result>
+	    <result column="img_path" property="img_path"></result>
+	</resultMap>
+
+	<insert id="addDataset"
+		useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO t_dataset (
+			name, type
+		) VALUES (
+			#{name}, #{type}
+		)
+	</insert>
+	
+	<select id="findByDatasetName" 
+		resultMap="datasetResultMap">
+		SELECT * FROM t_dataset WHERE name=#{name}
+	</select>
+
+	<select id="findAll" resultMap="datasetResultMap">
+    	SELECT * FROM t_dataset
+	</select>
+	
+	<select id="findByID" 
+		resultMap="datasetResultMap">
+		SELECT * FROM t_dataset WHERE id=#{id}
+	</select>
+	
+		
+	<delete id="delDataset">
+		DELETE FROM t_dataset WHERE id = #{id}
+	</delete>
+	
+	<update id="updDataset">
+		UPDATE t_dataset SET name=#{name},type=#{type}, img_path=#{img_path} WHERE id = #{id}
+	</update>
+	
+</mapper>

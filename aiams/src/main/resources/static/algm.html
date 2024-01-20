@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>算法添加</title>
+</head>
+<body>
+  <h1>算法添加</h1>
+  <form id="form-reg" action="handle_reg.do">
+    <table>
+      <tr>
+        <td>算法名称</td>
+        <td><input name="algname" /></td>
+      </tr>
+      <tr>
+        <td>算法类型</td>
+        <td><input name="algtype" /></td>
+      </tr>
+      <tr>
+        <td>算法描述</td>
+        <td><input name="algdesc" /></td>
+      </tr>   
+        <td colspan="2"><input onclick="reg()" type="button" value="添加" /></td>
+      </tr>
+    </table>
+  </form>
+<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+function reg() {
+	alert("准备执行注册……");
+	$.ajax({
+		"url":"/addalg",
+		"data":$("#form-reg").serialize(),
+		"type":"post",
+		"dataType":"json",
+		"success":function(json) {
+			if (json.state == 1) {
+				alert("添加成功！");
+			} else {
+				alert(json.message);
+			}
+		}
+	});
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

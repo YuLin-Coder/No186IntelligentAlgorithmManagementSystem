@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户注册</title>
+</head>
+<body>
+  <h1>用户注册</h1>
+  <form id="form-reg" action="handle_reg.do">
+    <table>
+      <tr>
+        <td>用户名</td>
+        <td><input name="username" /></td>
+      </tr>
+      <tr>
+        <td>密码</td>
+        <td><input name="password" /></td>
+      </tr>
+      <tr>
+        <td>年龄</td>
+        <td><input name="age" /></td>
+      </tr>
+      <tr>
+        <td>手机号码</td>
+        <td><input name="phone" /></td>
+      </tr>
+      <tr>
+        <td>电子邮箱</td>
+        <td><input name="email" /></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input onclick="reg()" type="button" value="注册" /></td>
+      </tr>
+    </table>
+  </form>
+<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+function reg() {
+	alert("准备执行注册……");
+	$.ajax({
+		"url":"/reg",
+		"data":$("#form-reg").serialize(),
+		"type":"post",
+		"dataType":"json",
+		"success":function(json) {
+			if (json.state == 1) {
+				alert("注册成功！");
+			} else {
+				alert(json.message);
+			}
+		}
+	});
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

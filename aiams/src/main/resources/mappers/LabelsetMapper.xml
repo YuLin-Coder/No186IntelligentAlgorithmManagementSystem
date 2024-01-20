@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.hhu.aiams.mapper.LabelsetMapper">
+
+	<resultMap id="labelsetResultMap" type="cn.hhu.aiams.entity.Labelset">
+	    <id column="id" property="id"></id>
+	    <result column="name" property="name"></result>
+	    <result column="des" property="des"></result>
+	    <result column="createtime" property="createtime"></result>
+	    <result column="updatetime" property="updatetime"></result>
+	</resultMap>
+
+	<insert id="addLabelset"
+		useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO t_labelset (
+			name, des
+		) VALUES (
+			#{name}, #{des}
+		)
+	</insert>
+	
+	<select id="findByLabelsetName" 
+		resultMap="labelsetResultMap">
+		SELECT * FROM t_labelset WHERE name=#{name}
+	</select>
+
+	<select id="findAll" resultMap="labelsetResultMap">
+    	SELECT * FROM t_labelset
+	</select>
+	
+	<select id="findByID" 
+		resultMap="labelsetResultMap">
+		SELECT * FROM t_labelset WHERE id=#{id}
+	</select>
+	
+		
+	<delete id="delLabelset">
+		DELETE FROM t_labelset WHERE id = #{id}
+	</delete>
+	
+	<update id="updLabelset">
+		UPDATE t_labelset SET name=#{name},des=#{des} WHERE id = #{id}
+	</update>
+	
+</mapper>

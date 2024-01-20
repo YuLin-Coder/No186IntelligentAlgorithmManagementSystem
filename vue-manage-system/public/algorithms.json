@@ -1,0 +1,36 @@
+{
+    "list": [{
+            "id": 1,
+            "name": "YOLOv4",
+            "type": "目标识别算法",
+            "state": "启用",
+            "callby":"https://127.0.0.1/yolo-flask/",
+            "date": "2019-11-1"
+        },
+        {
+            "id": 2,
+            "name": "SSD",
+            "type": "目标识别算法",
+            "state": "启用",
+            "callby":"https://127.0.0.1/ssd-flask/",
+            "date": "2020-11-1"
+        },
+        {
+            "id": 3,
+            "name": "拉普拉斯算子",
+            "type": "图像质量检测算法",
+            "state": "启用",
+            "callby":"https://127.0.0.1/image-quality-detection-flask/",
+            "date": "2021-12-1"
+        },
+        {
+            "id": 4,
+            "name": "A算子",
+            "type": "图像质量检测算法",
+            "state": "停用",
+            "callby":"https://127.0.0.1/image-quality-detection-test2/",
+            "date": "2021-12-2"
+        }
+    ],
+    "pageTotal": 1
+}
